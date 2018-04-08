@@ -13,7 +13,9 @@ bot.command("/smbc", ctx => {
 // Auxiliary functions
 function getRandomPic(ctx) {
   var xhttp = new XMLHttpRequest();
+  ctx.reply("1");
   xhttp.onreadystatechange = function() {
+    ctx.reply("3");
     if (this.readyState == 4 && this.status == 200) {
       var domParser = new DOMParser();
       var smbcHtml = domParser.parseFromString(xhttp.responseText, "text/html");
@@ -23,11 +25,12 @@ function getRandomPic(ctx) {
       ctx.replyWithPhoto({ url: comicImgUrl });
     }
   };
-  xhttp.onerror = function () {
+  xhttp.onerror = function() {
     ctx.reply("ERROR: It was an error with the xmlhttprequest call");
-  }
+  };
   xhttp.open("GET", "https://www.smbc-comics.com/random.php", true);
   xhttp.send();
+  ctx.reply("2");
 }
 
 function goToImgLinkToDownload(url) {
