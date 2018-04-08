@@ -17,6 +17,7 @@ function getRandomPic(ctx) {
   xhttp.onreadystatechange = function() {
     ctx.reply("3");
     if (this.readyState == 4 && this.status == 200) {
+      ctx.reply("4");
       var domParser = new DOMParser();
       var smbcHtml = domParser.parseFromString(xhttp.responseText, "text/html");
       var comicImg = smbcHtml.getElementById("cc-comic");
