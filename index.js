@@ -22,9 +22,9 @@ function getRandomPic(ctx) {
       var comicImgUrl =
         "http://www.smbc-comics.com" + comicImg.getAttribute("src");
       ctx.replyWithPhoto({ url: comicImgUrl });
-      if (DEBUG) ctx.reply("state changed " + comicImgUrl);
+      if (DEBUG) ctx.reply("state changed1 " + comicImgUrl);
     }
-    if (DEBUG) ctx.reply("state changed ");
+    if (DEBUG) ctx.reply("state changed2 ");
   };
   xhttp.onerror = function() {
     ctx.reply("Error: It was an error with the xmlhttprequest call");
