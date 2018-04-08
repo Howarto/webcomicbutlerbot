@@ -1,3 +1,4 @@
+const DEBUG = true;
 const { Composer, log } = require("micro-bot");
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const bot = new Composer();
@@ -21,14 +22,16 @@ function getRandomPic(ctx) {
       var comicImgUrl =
         "http://www.smbc-comics.com" + comicImg.getAttribute("src");
       ctx.replyWithPhoto({ url: comicImgUrl });
+      if (DEBUG) ctx.reply("state changed " + comicImgUrl);
     }
+    if (DEBUG) ctx.reply("state changed ");
   };
   xhttp.onerror = function() {
     ctx.reply("Error: It was an error with the xmlhttprequest call");
   };
   xhttp.open("GET", "http://www.smbc-comics.com/random.php", true);
   xhttp.send();
-  ctx.reply("2");
+  if (DEBUG) ctx.reply("END");
 }
 
 function goToImgLinkToDownload(url) {
