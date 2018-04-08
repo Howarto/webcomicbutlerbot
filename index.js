@@ -1,5 +1,5 @@
 const { Composer, log } = require("micro-bot");
-
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const bot = new Composer();
 
 bot.use(log());

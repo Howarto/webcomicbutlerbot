@@ -20,7 +20,8 @@
   "author": "howarto <howarto@ymail.com>",
   "license": "MIT",
   "dependencies": {
-    "micro-bot": "^2.2.3"
+    "micro-bot": "^2.2.3",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
     "eslint": "^4.17.0",
