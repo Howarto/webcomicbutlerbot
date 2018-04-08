@@ -15,7 +15,6 @@ bot.command("/smbc", ctx => {
 function getRandomPic(ctx) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-    if (DEBUG) ctx.reply(xhttp.responseText);
     if (this.readyState == 4 && this.status == 200) {
       var domParser = new DOMParser();
       var smbcHtml = domParser.parseFromString(xhttp.responseText, "text/html");
