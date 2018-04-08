@@ -13,24 +13,20 @@ bot.command("/smbc", ctx => {
 // Auxiliary functions
 function getRandomPic(ctx) {
   var xhttp = new XMLHttpRequest();
-  ctx.reply("1");
   xhttp.onreadystatechange = function() {
-    ctx.reply("3");
-    ctx.reply(xhttp.responseText);
     if (this.readyState == 4 && this.status == 200) {
-      ctx.reply("4");
       var domParser = new DOMParser();
       var smbcHtml = domParser.parseFromString(xhttp.responseText, "text/html");
       var comicImg = smbcHtml.getElementById("cc-comic");
       var comicImgUrl =
-        "https://www.smbc-comics.com" + comicImg.getAttribute("src");
+        "http://www.smbc-comics.com" + comicImg.getAttribute("src");
       ctx.replyWithPhoto({ url: comicImgUrl });
     }
   };
   xhttp.onerror = function() {
-    ctx.reply("ERROR: It was an error with the xmlhttprequest call");
+    ctx.reply("Error: It was an error with the xmlhttprequest call");
   };
-  xhttp.open("GET", "https://www.smbc-comics.com/random.php", true);
+  xhttp.open("GET", "http://www.smbc-comics.com/random.php", true);
   xhttp.send();
   ctx.reply("2");
 }
