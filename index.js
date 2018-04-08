@@ -16,6 +16,7 @@ function getRandomPic(ctx) {
   ctx.reply("1");
   xhttp.onreadystatechange = function() {
     ctx.reply("3");
+    ctx.reply(xhttp.responseText);
     if (this.readyState == 4 && this.status == 200) {
       ctx.reply("4");
       var domParser = new DOMParser();
