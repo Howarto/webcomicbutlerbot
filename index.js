@@ -7,7 +7,7 @@ bot.start(({ reply }) => reply("Hey there!"));
 bot.command("help", ({ reply }) => reply("Help message"));
 bot.command("about", ({ reply }) => reply("About message"));
 bot.command("/smbc", ctx => {
-  reply("Smbc command");
+  ctx.reply("Smbc command");
   getRandomPic(ctx);
 });
 
