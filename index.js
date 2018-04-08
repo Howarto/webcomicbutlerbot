@@ -20,10 +20,12 @@ function getRandomPic(ctx) {
       var comicImg = smbcHtml.getElementById("cc-comic");
       var comicImgUrl =
         "https://www.smbc-comics.com" + comicImg.getAttribute("src");
-      ctx.reply("Smbc command");
       ctx.replyWithPhoto({ url: comicImgUrl });
     }
   };
+  xhttp.onerror = function () {
+    ctx.reply("ERROR: It was an error with the xmlhttprequest call");
+  }
   xhttp.open("GET", "https://www.smbc-comics.com/random.php", true);
   xhttp.send();
 }
