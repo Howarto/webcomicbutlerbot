@@ -20,6 +20,7 @@ function getRandomPic(ctx) {
       var comicImg = smbcHtml.getElementById("cc-comic");
       var comicImgUrl =
         "https://www.smbc-comics.com" + comicImg.getAttribute("src");
+      ctx.reply("Smbc command");
       ctx.replyWithPhoto({ url: comicImgUrl });
     }
   };
