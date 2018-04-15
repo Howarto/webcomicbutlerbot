@@ -17,6 +17,7 @@ function getRandomPic(ctx) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+        ctx.reply("algo");
       var smbcHtml = new JSDOM(xhttp.responseText);
       var comicImg = smbcHtml.window.document.getElementById("cc-comic");
       var comicImgUrl =
