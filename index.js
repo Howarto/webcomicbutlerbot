@@ -1,6 +1,8 @@
 const DEBUG = true;
 const { Composer, log } = require("micro-bot");
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 const bot = new Composer();
 
 bot.use(log());
@@ -19,9 +21,8 @@ function getRandomPic(ctx) {
     if (DEBUG) ctx.reply(this.readyState + " " + this.status + " " + this.statusText);
     if (this.readyState == 4 && this.status == 200) {
       debugger;
-      var domParser = new DOMParser();
-      var smbcHtml = domParser.parseFromString(xhttp.responseText, "text/html");
-      var comicImg = smbcHtml.getElementById("cc-comic");
+      var smbcHtml = new JSDOM(xhttp.responseText);
+      var comicImg = smbcHtml.window.document.getElementById("cc-comic");
       var comicImgUrl =
       "https://www.smbc-comics.com" + comicImg.getAttribute("src");
       ctx.replyWithPhoto({ url: comicImgUrl });

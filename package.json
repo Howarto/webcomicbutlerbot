@@ -20,6 +20,7 @@
   "author": "howarto <howarto@ymail.com>",
   "license": "MIT",
   "dependencies": {
+    "jsdom": "^11.7.0",
     "micro-bot": "^2.2.3",
     "xmlhttprequest": "^1.8.0"
   },
