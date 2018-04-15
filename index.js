@@ -15,8 +15,6 @@ bot.command("/smbc", ctx => {
 // Auxiliary functions
 function getRandomPic(ctx) {
   var xhttp = new XMLHttpRequest();
-  xhttp.setRequestHeader('origin', '*');
-  xhttp.setRequestHeader('x-requested-with', '*');
   xhttp.onreadystatechange = function() {
     if (DEBUG) ctx.reply(this.readyState + " " + this.status + " " + this.statusText);
     if (this.readyState == 4 && this.status == 200) {
@@ -25,13 +23,15 @@ function getRandomPic(ctx) {
       var smbcHtml = domParser.parseFromString(xhttp.responseText, "text/html");
       var comicImg = smbcHtml.getElementById("cc-comic");
       var comicImgUrl =
-        "https://www.smbc-comics.com" + comicImg.getAttribute("src");
+      "https://www.smbc-comics.com" + comicImg.getAttribute("src");
       ctx.replyWithPhoto({ url: comicImgUrl });
     }
   };
   xhttp.onerror = function() {
   };
   xhttp.open("GET", "https://cors-anywhere.herokuapp.com/https://www.smbc-comics.com/random.php", true);
+  xhttp.setRequestHeader('origin', '*');
+  xhttp.setRequestHeader('x-requested-with', '*');
   xhttp.send();
   if (DEBUG) ctx.reply("END");
 }
