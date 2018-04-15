@@ -14,17 +14,16 @@ bot.command("/smbc", ctx => {
 
 // Auxiliary functions
 function getRandomPic(ctx) {
-  if (DEBUG) ctx.reply(this.readyState + " " + this.status + " " + this.statusText + " " + this.responseURL);
   var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 var xhr = new XMLHttpRequest();
 
 xhr.onreadystatechange = function() {
-	console.log("State: " + this.readyState);
+	ctx.reply("State: " + this.readyState);
 	
 	if (this.readyState === 4) {
-		console.log("Complete.\nBody length: " + this.responseText.length);
-		console.log("Body:\n" + this.responseText);
+		ctx.reply("Complete.\nBody length: " + this.responseText.length);
+		ctx.reply("Body:\n" + this.responseText);
 	}
 };
 
