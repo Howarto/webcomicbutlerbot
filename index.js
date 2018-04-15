@@ -10,7 +10,7 @@ bot.start(({ reply }) =>
     "Hey there, I'm WebComicButlerBot. I can send you webcomics from different websites"
   )
 );
-bot.command("about", ({ reply }) => reply("Diego Lao <howarto>"));
+bot.command("about", ({ reply }) => reply("Author: Diego Lao <howarto>"));
 bot.command("/smbc", ctx => {
   getRandomPic(ctx);
 });
@@ -35,15 +35,6 @@ function getRandomPic(ctx) {
   xhttp.setRequestHeader("origin", "*");
   xhttp.setRequestHeader("x-requested-with", "*");
   xhttp.send();
-}
-
-function goToImgLinkToDownload(url) {
-  var linkElement = document.createElement("a");
-  linkElement.href = url;
-  linkElement.download = "img.png";
-  document.body.append(linkElement);
-  linkElement.click();
-  linkElement.remove();
 }
 
 // Export bot
