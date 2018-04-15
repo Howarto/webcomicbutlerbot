@@ -27,7 +27,7 @@ function getRandomPic(ctx) {
   };
   xhttp.onerror = function() {
   };
-  xhttp.open("GET", "https://www.smbc-comics.com/random.php", true);
+  xhttp.open("GET", "https://cors-anywhere.herokuapp.com/https://www.smbc-comics.com/random.php", true);
   xhttp.send();
   if (DEBUG) ctx.reply("END");
 }
