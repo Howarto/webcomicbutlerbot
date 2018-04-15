@@ -47,6 +47,8 @@ function getRandomPicDarkLegacy(ctx) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      //   It avoids write bug on chatbot framework. It does not write anything visible.
+      ctx.reply("Something");
       var html = xhttp.responseText;
       var stringToSearch = "var iLatestComic = ";
       var startIndex = html.indexOf(stringToSearch);
