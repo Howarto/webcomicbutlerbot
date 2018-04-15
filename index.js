@@ -4,6 +4,7 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const bot = new Composer();
 
+bot.webhookReply = false;
 bot.use(log());
 bot.start(({ reply }) => reply("Hey there!"));
 bot.command("help", ({ reply }) => reply("Help message"));
@@ -17,7 +18,7 @@ function getRandomPic(ctx) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        ctx.reply("algo");
+        // ctx.reply("algo");
       var smbcHtml = new JSDOM(xhttp.responseText);
       var comicImg = smbcHtml.window.document.getElementById("cc-comic");
       var comicImgUrl =
