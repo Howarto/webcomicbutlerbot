@@ -14,20 +14,26 @@ bot.command("/smbc", ctx => {
 
 // Auxiliary functions
 function getRandomPic(ctx) {
-
-var xhr = new XMLHttpRequest();
-
-xhr.onreadystatechange = function() {
-	ctx.reply("State: " + this.readyState);
-	
-	if (this.readyState === 4) {
-		ctx.reply("Complete.\nBody length: " + this.responseText.length);
-		ctx.reply("Body:\n" + this.responseText);
-	}
-};
-
-xhr.open("GET", "http://driverdan.com");
-xhr.send();
+  var xhttp = new XMLHttpRequest();
+  xhttp.setRequestHeader('origin', '*');
+  xhttp.setRequestHeader('x-requested-with', '*');
+  xhttp.onreadystatechange = function() {
+    if (DEBUG) ctx.reply(this.readyState + " " + this.status + " " + this.statusText);
+    if (this.readyState == 4 && this.status == 200) {
+      debugger;
+      var domParser = new DOMParser();
+      var smbcHtml = domParser.parseFromString(xhttp.responseText, "text/html");
+      var comicImg = smbcHtml.getElementById("cc-comic");
+      var comicImgUrl =
+        "https://www.smbc-comics.com" + comicImg.getAttribute("src");
+      ctx.replyWithPhoto({ url: comicImgUrl });
+    }
+  };
+  xhttp.onerror = function() {
+  };
+  xhttp.open("GET", "https://cors-anywhere.herokuapp.com/https://www.smbc-comics.com/random.php", true);
+  xhttp.send();
+  if (DEBUG) ctx.reply("END");
 }
 
 function goToImgLinkToDownload(url) {
