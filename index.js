@@ -16,6 +16,7 @@ bot.command("/smbc", ctx => {
 function getRandomPic(ctx) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
+    if (DEBUG) ctx.reply(this.readyState + " " + this.status);
     if (this.readyState == 4 && this.status == 200) {
       debugger;
       var domParser = new DOMParser();
