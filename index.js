@@ -27,6 +27,8 @@ function getRandomPic(ctx) {
       ctx.replyWithPhoto({ url: comicImgUrl });
     }
   };
+  xhttp.onerror = function() {
+  };
   xhttp.open(
     "GET",
     "https://cors-anywhere.herokuapp.com/https://www.smbc-comics.com/random.php",
