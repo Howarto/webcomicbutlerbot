@@ -21,7 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "jsdom": "^11.7.0",
-    "micro-bot": "^2.2.3",
+    "micro-bot": "^2.2.4",
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
