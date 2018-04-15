@@ -15,6 +15,7 @@ bot.command("/smbc", ctx => {
 function getRandomPic(ctx) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
+    if (DEBUG) ctx.reply("Entra al readystatechange con valores " + this.readyState + " " + this.status);
     if (this.readyState == 4 && this.status == 200) {
       var domParser = new DOMParser();
       var smbcHtml = domParser.parseFromString(xhttp.responseText, "text/html");
@@ -24,10 +25,6 @@ function getRandomPic(ctx) {
       ctx.replyWithPhoto({ url: comicImgUrl });
       if (DEBUG) ctx.reply("state changed1 " + comicImgUrl);
     }
-    if (DEBUG) ctx.reply("state changed2 ");
-  };
-  xhttp.onerror = function() {
-    ctx.reply("Error: It was an error with the xmlhttprequest call");
   };
   xhttp.open("GET", "http://www.smbc-comics.com/random.php", true);
   xhttp.send();
