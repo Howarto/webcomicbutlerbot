@@ -14,7 +14,6 @@ bot.command("/smbc", ctx => {
 
 // Auxiliary functions
 function getRandomPic(ctx) {
-  var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 var xhr = new XMLHttpRequest();
 
