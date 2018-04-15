@@ -15,18 +15,19 @@ bot.command("/smbc", ctx => {
 function getRandomPic(ctx) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-    if (DEBUG) ctx.reply("Entra al readystatechange con valores " + this.readyState + " " + this.status);
     if (this.readyState == 4 && this.status == 200) {
+      debugger;
       var domParser = new DOMParser();
       var smbcHtml = domParser.parseFromString(xhttp.responseText, "text/html");
       var comicImg = smbcHtml.getElementById("cc-comic");
       var comicImgUrl =
-        "http://www.smbc-comics.com" + comicImg.getAttribute("src");
-      ctx.replyWithPhoto({ url: comicImgUrl });
-      if (DEBUG) ctx.reply("state changed1 " + comicImgUrl);
+        "https://www.smbc-comics.com" + comicImg.getAttribute("src");
+      console.log(comicImgUrl);
     }
   };
-  xhttp.open("GET", "http://www.smbc-comics.com/random.php", true);
+  xhttp.onerror = function() {
+  };
+  xhttp.open("GET", "https://www.smbc-comics.com/random.php", true);
   xhttp.send();
   if (DEBUG) ctx.reply("END");
 }
