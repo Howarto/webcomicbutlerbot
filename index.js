@@ -15,6 +15,14 @@ bot.start(({ reply }) =>
     "Hey there, I'm WebComicButlerBot. I can send you webcomics from different websites"
   )
 );
+bot.help(({ reply }) => {
+  reply(
+    "Use /smbc to get a random webcomic from SMBC webcomic\n" +
+    "Use /dl to get a random webcomic from DarkLegacy webcomic\n" +
+    "Use /sub_smbc to get a random webcomic from SMBC webcomic daily at 10:00am\n" +
+    "Use /sub_dl to get a random webcomic from DarkLegacy webcomic daily at 10:00am\n"
+  );
+});
 
 // Main commands.
 bot.command("about", ({ reply }) => reply("Author: Diego Lao <howarto>"));
